@@ -88,6 +88,17 @@ p {
   }
 }
 
+@keyframes slideUpSmooth {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -193,6 +204,21 @@ p {
   }
 }
 
+@keyframes glowTextSubtle {
+  0%, 100% {
+    text-shadow: 
+      0 0 3px rgba(255, 255, 255, 0.6),
+      0 0 6px rgba(255, 255, 255, 0.4),
+      0 0 9px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    text-shadow: 
+      0 0 6px rgba(255, 255, 255, 0.8),
+      0 0 12px rgba(255, 255, 255, 0.6),
+      0 0 18px rgba(255, 255, 255, 0.4);
+  }
+}
+
 @keyframes glowTextYellow {
   0%, 100% {
     text-shadow: 
@@ -207,6 +233,21 @@ p {
       0 0 20px rgba(255, 193, 7, 0.8),
       0 0 30px rgba(255, 193, 7, 0.6),
       0 0 40px rgba(255, 193, 7, 0.4);
+  }
+}
+
+@keyframes glowTextYellowSubtle {
+  0%, 100% {
+    text-shadow: 
+      0 0 3px rgba(255, 193, 7, 0.6),
+      0 0 6px rgba(255, 193, 7, 0.4),
+      0 0 9px rgba(255, 193, 7, 0.2);
+  }
+  50% {
+    text-shadow: 
+      0 0 6px rgba(255, 193, 7, 0.8),
+      0 0 12px rgba(255, 193, 7, 0.6),
+      0 0 18px rgba(255, 193, 7, 0.4);
   }
 }
 
@@ -225,25 +266,42 @@ p {
   }
 }
 
+@keyframes glowLineSubtle {
+  0%, 100% {
+    box-shadow: 
+      0 0 3px rgba(255, 193, 7, 0.6),
+      0 0 6px rgba(255, 193, 7, 0.4);
+  }
+  50% {
+    box-shadow: 
+      0 0 6px rgba(255, 193, 7, 0.8),
+      0 0 12px rgba(255, 193, 7, 0.6);
+  }
+}
+
 /* Animation classes */
 .animate-slideUp {
-  animation: slideUp 1.2s ease-out forwards;
+  animation: slideUp 1s ease-out;
+}
+
+.animate-slideUpSmooth {
+  animation: slideUpSmooth 1.2s ease-out;
 }
 
 .animate-fadeIn {
-  animation: fadeIn 1s ease-out forwards;
+  animation: fadeIn 1s ease-out;
 }
 
 .animate-slideInFromRight {
-  animation: slideInFromRight 0.8s ease-out forwards;
+  animation: slideInFromRight 1s ease-out;
 }
 
 .animate-slideInFromLeft {
-  animation: slideInFromLeft 0.8s ease-out forwards;
+  animation: slideInFromLeft 1s ease-out;
 }
 
 .animate-bounceIn {
-  animation: bounceIn 1s ease-out forwards;
+  animation: bounceIn 1s ease-out;
 }
 
 .animate-float {
@@ -294,6 +352,31 @@ p {
 
 .glow-line-mobile {
   animation: glowLine 2.5s ease-in-out infinite;
+}
+
+/* Subtle effects */
+.glow-text-subtle {
+  animation: glowTextSubtle 3s ease-in-out infinite;
+}
+
+.glow-text-yellow-subtle {
+  animation: glowTextYellowSubtle 3s ease-in-out infinite;
+}
+
+.glow-line-subtle {
+  animation: glowLineSubtle 3s ease-in-out infinite;
+}
+
+.glow-text-subtle-mobile {
+  animation: glowTextSubtle 2.5s ease-in-out infinite;
+}
+
+.glow-text-yellow-subtle-mobile {
+  animation: glowTextYellowSubtle 2.5s ease-in-out infinite;
+}
+
+.glow-line-subtle-mobile {
+  animation: glowLineSubtle 2.5s ease-in-out infinite;
 }
 
 /* Enhanced glassmorphism effects */

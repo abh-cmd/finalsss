@@ -1,19 +1,44 @@
 "use client";
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { MdBrush, MdAccessTime, MdPayments, MdPhone, MdEmail, MdClose } from 'react-icons/md';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ConsultationModal = ({ isOpen, onClose }) => {
     const [formData, setFormData] = useState({
         name: '',
+        mobile: '',
         email: '',
-        phone: '',
-        message: ''
+        homeType: '',
+        location: ''
     });
+    const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [notification, setNotification] = useState(null);
+
+    const showNotification = (message, type = 'success') => {
+        setNotification({ message, type });
+        setTimeout(() => setNotification(null), 5000);
+    };
+
+    const validateForm = () => {
+        const newErrors = {};
+        if (!formData.name.trim()) newErrors.name = 'Name is required';
+        if (!formData.mobile.trim()) newErrors.mobile = 'Mobile number is required';
+        if (!formData.email.trim()) newErrors.email = 'Email is required';
+        if (!formData.location.trim()) newErrors.location = 'Location is required';
+        
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        if (!validateForm()) {
+            return;
+        }
+
         setIsSubmitting(true);
         
         try {
@@ -25,139 +50,203 @@ const ConsultationModal = ({ isOpen, onClose }) => {
                 body: JSON.stringify(formData),
             });
 
+            const data = await response.json();
+
             if (response.ok) {
-                alert('Thank you! We will get back to you soon.');
-                setFormData({ name: '', email: '', phone: '', message: '' });
-                onClose();
+                showNotification('Thank you! We will contact you soon.');
+                setFormData({
+                    name: '',
+                    mobile: '',
+                    email: '',
+                    homeType: '',
+                    location: ''
+                });
+                setErrors({});
+                setTimeout(() => onClose(), 2000);
             } else {
-                alert('Something went wrong. Please try again.');
+                showNotification(data.error || 'Something went wrong. Please try again.', 'error');
             }
         } catch (error) {
-            alert('Something went wrong. Please try again.');
+            showNotification('Failed to submit. Please try again.', 'error');
         } finally {
             setIsSubmitting(false);
         }
     };
 
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+        
+        if (errors[name]) {
+            setErrors(prev => ({
+                ...prev,
+                [name]: ''
+            }));
+        }
     };
 
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            {/* Backdrop */}
-            <div 
-                className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-                onClick={onClose}
-            ></div>
-
-            {/* Modal */}
-            <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 md:max-w-lg transform transition-all duration-300">
-                {/* Header */}
-                <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-6 rounded-t-2xl">
-                    <div className="flex justify-between items-center">
-                        <h2 className="text-xl md:text-2xl font-bold">Free Consultation</h2>
+        <AnimatePresence>
+            {isOpen && (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+                    onClick={onClose}
+                >
+                    <motion.div
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.9, opacity: 0 }}
+                        className="relative w-full max-w-4xl bg-gradient-to-br from-gray-900 to-black rounded-2xl shadow-2xl overflow-hidden"
+                        onClick={e => e.stopPropagation()}
+                    >
+                        {/* Close Button */}
                         <button
                             onClick={onClose}
-                            className="text-white hover:text-gray-200 transition-colors duration-200"
+                            className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-300 z-10"
                         >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                            </svg>
+                            <MdClose className="w-6 h-6" />
                         </button>
-                    </div>
-                    <p className="text-orange-100 mt-2 text-sm md:text-base">
-                        Get your free consultation and transform your space today!
-                    </p>
-                </div>
 
-                {/* Form */}
-                <form onSubmit={handleSubmit} className="p-6 space-y-4">
-                    <div>
-                        <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
-                            Full Name *
-                        </label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
-                            placeholder="Enter your full name"
-                        />
-                    </div>
-
-                    <div>
-                        <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
-                            Email Address *
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
-                            placeholder="Enter your email"
-                        />
-                    </div>
-
-                    <div>
-                        <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
-                            Phone Number
-                        </label>
-                        <input
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            value={formData.phone}
-                            onChange={handleChange}
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
-                            placeholder="Enter your phone number"
-                        />
-                    </div>
-
-                    <div>
-                        <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
-                            Project Details *
-                        </label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            value={formData.message}
-                            onChange={handleChange}
-                            required
-                            rows="4"
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 resize-none"
-                            placeholder="Tell us about your project requirements..."
-                        ></textarea>
-                    </div>
-
-                    <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-                    >
-                        {isSubmitting ? (
-                            <div className="flex items-center justify-center">
-                                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                                Sending...
+                        <div className="grid grid-cols-1 lg:grid-cols-2">
+                            {/* Left Column - Features */}
+                            <div className="p-8 bg-gradient-to-br from-amber-500/10 to-orange-500/10">
+                                <h2 className="text-2xl font-noto-serif font-semibold text-white mb-8">
+                                    Our Promise to You
+                                </h2>
+                                <div className="space-y-6">
+                                    <div className="flex items-start space-x-4">
+                                        <div className="w-10 h-10 bg-gradient-to-br from-amber-500/20 to-amber-600/20 rounded-lg flex items-center justify-center">
+                                            <MdBrush className="w-5 h-5 text-amber-400" />
+                                        </div>
+                                        <div>
+                                            <h3 className="font-semibold text-white mb-1">Creative Excellence</h3>
+                                            <p className="text-gray-300 text-sm">Innovative designs that reflect your unique style</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start space-x-4">
+                                        <div className="w-10 h-10 bg-gradient-to-br from-amber-500/20 to-amber-600/20 rounded-lg flex items-center justify-center">
+                                            <MdAccessTime className="w-5 h-5 text-amber-400" />
+                                        </div>
+                                        <div>
+                                            <h3 className="font-semibold text-white mb-1">Timely Delivery</h3>
+                                            <p className="text-gray-300 text-sm">We respect your time and deliver on schedule</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start space-x-4">
+                                        <div className="w-10 h-10 bg-gradient-to-br from-amber-500/20 to-amber-600/20 rounded-lg flex items-center justify-center">
+                                            <MdPayments className="w-5 h-5 text-amber-400" />
+                                        </div>
+                                        <div>
+                                            <h3 className="font-semibold text-white mb-1">Transparent Pricing</h3>
+                                            <p className="text-gray-300 text-sm">No hidden costs, clear and fair pricing</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        ) : (
-                            'Get Free Consultation'
-                        )}
-                    </button>
-                </form>
-            </div>
-        </div>
+
+                            {/* Right Column - Form */}
+                            <div className="p-8">
+                                <h2 className="text-2xl font-noto-serif font-semibold text-white mb-6">
+                                    Schedule Your Consultation
+                                </h2>
+                                <form onSubmit={handleSubmit} className="space-y-4">
+                                    {notification && (
+                                        <div className={`p-3 rounded-lg ${
+                                            notification.type === 'success' 
+                                                ? 'bg-green-500/20 text-green-300' 
+                                                : 'bg-red-500/20 text-red-300'
+                                        }`}>
+                                            {notification.message}
+                                        </div>
+                                    )}
+
+                                    <div>
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            placeholder="Your Name"
+                                            className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-amber-500/50 transition-colors duration-300"
+                                        />
+                                        {errors.name && <p className="mt-1 text-red-400 text-sm">{errors.name}</p>}
+                                    </div>
+
+                                    <div>
+                                        <input
+                                            type="tel"
+                                            name="mobile"
+                                            value={formData.mobile}
+                                            onChange={handleChange}
+                                            placeholder="Mobile Number"
+                                            className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-amber-500/50 transition-colors duration-300"
+                                        />
+                                        {errors.mobile && <p className="mt-1 text-red-400 text-sm">{errors.mobile}</p>}
+                                    </div>
+
+                                    <div>
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            placeholder="Email Address"
+                                            className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-amber-500/50 transition-colors duration-300"
+                                        />
+                                        {errors.email && <p className="mt-1 text-red-400 text-sm">{errors.email}</p>}
+                                    </div>
+
+                                    <div>
+                                        <select
+                                            name="homeType"
+                                            value={formData.homeType}
+                                            onChange={handleChange}
+                                            className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-amber-500/50 transition-colors duration-300"
+                                        >
+                                            <option value="">Select Home Type</option>
+                                            <option value="apartment">Apartment</option>
+                                            <option value="house">House</option>
+                                            <option value="villa">Villa</option>
+                                            <option value="commercial">Commercial Space</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <input
+                                            type="text"
+                                            name="location"
+                                            value={formData.location}
+                                            onChange={handleChange}
+                                            placeholder="Your Location"
+                                            className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-amber-500/50 transition-colors duration-300"
+                                        />
+                                        {errors.location && <p className="mt-1 text-red-400 text-sm">{errors.location}</p>}
+                                    </div>
+
+                                    <button
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                        className={`w-full py-3 px-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-medium rounded-lg transition-all duration-300 ${
+                                            isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                                        }`}
+                                    >
+                                        {isSubmitting ? 'Submitting...' : 'Schedule Consultation'}
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </motion.div>
+                </motion.div>
+            )}
+        </AnimatePresence>
     );
 };
 

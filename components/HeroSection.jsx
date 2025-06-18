@@ -28,11 +28,11 @@ const HeroSection = () => {
             {/* Desktop Content */}
             <div className="relative z-10 flex items-center justify-center h-full hidden md:block">
                 <div className="text-center px-4 md:px-8">
-                    {/* Desktop Enhanced Merged Box with Animation */}
-                    <div className="animate-slideUp bg-white/25 backdrop-blur-lg rounded-[3rem] p-8 md:p-10 max-w-3xl mx-auto shadow-2xl border border-white/30 transform hover:scale-105 transition-all duration-500">
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight drop-shadow-2xl glow-text-desktop">
+                    {/* Desktop Enhanced Merged Box with Lower Position and Smooth Animation */}
+                    <div className="animate-slideUpSmooth bg-white/25 backdrop-blur-lg rounded-[3rem] p-8 md:p-10 max-w-3xl mx-auto shadow-2xl border border-white/30 transform hover:scale-105 transition-all duration-500 mt-20">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight drop-shadow-2xl glow-text-subtle">
                             Transform Your Space with
-                            <span className="block text-yellow-400 mt-3 glow-text-yellow">Sri Sai Interiors</span>
+                            <span className="block text-yellow-400 mt-3 glow-text-yellow-subtle">Sri Sai Interiors</span>
                         </h1>
                         
                         <p className="text-lg md:text-xl lg:text-2xl text-gray-200 mb-8 leading-relaxed max-w-2xl mx-auto drop-shadow-lg font-medium">
@@ -40,18 +40,8 @@ const HeroSection = () => {
                             From concept to completion, we bring your vision to life.
                         </p>
 
-                        {/* Desktop Enhanced Buttons */}
-                        <div className="flex flex-row gap-6 justify-center items-center">
-                            <button
-                                onClick={() => setShowPhonePopup(true)}
-                                className="group bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-full font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center gap-3 shadow-lg text-lg"
-                            >
-                                <svg className="w-6 h-6 group-hover:animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                                </svg>
-                                Call Now
-                            </button>
-
+                        {/* Desktop Enhanced Button - Only Consultation */}
+                        <div className="flex justify-center items-center">
                             <button 
                                 onClick={() => setShowConsultationModal(true)}
                                 className="group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-4 rounded-full font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center gap-3 shadow-lg relative overflow-hidden text-lg"
@@ -72,11 +62,11 @@ const HeroSection = () => {
             {/* Mobile Content */}
             <div className="relative z-10 flex items-center justify-center h-full md:hidden">
                 <div className="text-center px-4">
-                    {/* Mobile Enhanced Merged Box with Animation */}
-                    <div className="animate-slideUp bg-white/30 backdrop-blur-lg rounded-[2rem] p-6 max-w-sm mx-auto shadow-2xl border border-white/40 transform hover:scale-105 transition-all duration-500">
-                        <h1 className="text-2xl font-black text-white mb-4 leading-tight drop-shadow-xl glow-text-mobile">
+                    {/* Mobile Enhanced Merged Box with Lower Position and Smooth Animation */}
+                    <div className="animate-slideUpSmooth bg-white/30 backdrop-blur-lg rounded-[2rem] p-6 max-w-sm mx-auto shadow-2xl border border-white/40 transform hover:scale-105 transition-all duration-500 mt-16">
+                        <h1 className="text-2xl font-black text-white mb-4 leading-tight drop-shadow-xl glow-text-subtle-mobile">
                             Transform Your Space with
-                            <span className="block text-yellow-400 mt-2 glow-text-yellow-mobile">Sri Sai Interiors</span>
+                            <span className="block text-yellow-400 mt-2 glow-text-yellow-subtle-mobile">Sri Sai Interiors</span>
                         </h1>
                         
                         <p className="text-sm text-gray-200 mb-6 leading-relaxed mx-auto drop-shadow-md font-medium">
@@ -84,18 +74,8 @@ const HeroSection = () => {
                             From concept to completion, we bring your vision to life.
                         </p>
 
-                        {/* Mobile Enhanced Buttons */}
-                        <div className="flex flex-col gap-4 justify-center items-center">
-                            <button
-                                onClick={() => setShowPhonePopup(true)}
-                                className="group bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-full font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center gap-2 shadow-lg text-base w-full justify-center"
-                            >
-                                <svg className="w-5 h-5 group-hover:animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                                </svg>
-                                Call Now
-                            </button>
-
+                        {/* Mobile Enhanced Button - Only Consultation */}
+                        <div className="flex justify-center items-center">
                             <button 
                                 onClick={() => setShowConsultationModal(true)}
                                 className="group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-3 rounded-full font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center gap-2 shadow-lg relative overflow-hidden text-base w-full justify-center"

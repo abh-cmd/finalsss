@@ -7,6 +7,7 @@ const WhatsAppWidget = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
+    const [showPhonePopup, setShowPhonePopup] = useState(false);
 
     useEffect(() => {
         // Show widget after 3 seconds
@@ -24,8 +25,8 @@ const WhatsAppWidget = () => {
         window.open(whatsappUrl, '_blank');
     };
 
-    const handleCallClick = () => {
-        window.open('tel:+917013825454', '_self');
+    const handlePhoneClick = () => {
+        setShowPhonePopup(true);
     };
 
     return (
@@ -75,7 +76,7 @@ const WhatsAppWidget = () => {
                         transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
                     >
                         <motion.button
-                            onClick={handleCallClick}
+                            onClick={handlePhoneClick}
                             className="relative bg-blue-500 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 touch-target"
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
@@ -126,6 +127,88 @@ const WhatsAppWidget = () => {
                     )}
                 </AnimatePresence>
             </div>
+
+            {/* Phone Information Side Popup */}
+            {showPhonePopup && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+                    <div 
+                        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                        onClick={() => setShowPhonePopup(false)}
+                    ></div>
+                    
+                    <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300">
+                        {/* Header */}
+                        <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 rounded-t-2xl">
+                            <div className="flex justify-between items-center">
+                                <h2 className="text-xl font-bold">Contact Information</h2>
+                                <button
+                                    onClick={() => setShowPhonePopup(false)}
+                                    className="text-white hover:text-gray-200 transition-colors duration-200"
+                                >
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Content */}
+                        <div className="p-6 space-y-6">
+                            {/* Phone Number */}
+                            <div className="flex items-center space-x-4">
+                                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 className="font-semibold text-gray-800">Phone Number</h3>
+                                    <p className="text-gray-600">+91 98765 43210</p>
+                                </div>
+                            </div>
+
+                            {/* Office Location */}
+                            <div className="flex items-center space-x-4">
+                                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                    <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 className="font-semibold text-gray-800">Office Location</h3>
+                                    <p className="text-gray-600">123 Interior Street, Design District, City - 123456</p>
+                                </div>
+                            </div>
+
+                            {/* Working Hours */}
+                            <div className="flex items-center space-x-4">
+                                <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                                    <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 className="font-semibold text-gray-800">Working Hours</h3>
+                                    <p className="text-gray-600">Mon - Sat: 9:00 AM - 7:00 PM</p>
+                                    <p className="text-gray-600">Sunday: 10:00 AM - 5:00 PM</p>
+                                </div>
+                            </div>
+
+                            {/* Call Button */}
+                            <button
+                                onClick={() => {
+                                    window.location.href = 'tel:+919876543210';
+                                    setShowPhonePopup(false);
+                                }}
+                                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"
+                            >
+                                Call Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     );
 };
