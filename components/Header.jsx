@@ -68,116 +68,120 @@ const Header = () => {
                 transition={{ duration: 0.3, ease: "easeInOut" }}
             >
                 <div className="w-full">
-                    <div className={`bg-gradient-to-r from-blue-950/95 to-blue-900/95 backdrop-blur-md shadow-professional px-4 md:px-8 py-3 md:py-4 flex items-center justify-between min-h-[70px] md:min-h-[80px] transition-all duration-300 ${isScrolled ? 'bg-blue-950/98 shadow-elevated' : ''}`}>
-                        {/* Logo */}
-                        <motion.div 
-                            className="relative w-[200px] md:w-[300px] h-[60px] md:h-[80px] transition-all duration-500 hover:scale-105 cursor-pointer z-[60]"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            <div className="relative z-[70] h-full">
+                    {/* Desktop Header - Original Design */}
+                    <div className="hidden md:block">
+                        <div className={`bg-white shadow-md px-8 py-4 flex items-center justify-between transition-all duration-300 ${isScrolled ? 'shadow-lg' : ''}`}>
+                            {/* Logo */}
+                            <div className="relative w-[200px] h-[60px]">
                                 <Image
                                     src="/image/WhatsApp Image 2025-06-17 at 10.31.42_5ded47ec.png"
                                     alt="SRI SAI INTERIORS Logo"
                                     fill
                                     quality={100}
-                                    sizes="(max-width: 768px) 200px, 300px"
-                                    className="object-contain p-1 transition-all duration-500"
+                                    sizes="200px"
+                                    className="object-contain"
                                     priority
-                                    style={{
-                                        objectFit: 'contain',
-                                        objectPosition: 'center',
-                                        filter: 'drop-shadow(0 4px 12px rgba(255,255,255,0.3)) brightness(1.2) contrast(1.1)',
-                                    }}
                                 />
                             </div>
-                        </motion.div>
 
-                        {/* Company Name - Mobile */}
-                        <div className="md:hidden relative transform hover:scale-105 transition-transform duration-300">
-                            <h1 className="text-lg font-bold text-white [text-shadow:_0_0_20px_rgba(255,255,255,0.5)] tracking-wide">
-                                SRI SAI INTERIORS
-                            </h1>
-                            <div className="w-full h-1 bg-gradient-to-r from-amber-500 via-amber-300 to-amber-500 rounded-full mt-1 shadow-[0_0_20px_rgba(251,191,36,0.7)]"></div>
-                        </div>
-
-                        {/* Company Name - Desktop */}
-                        <div className="hidden md:block relative ml-2 transform hover:scale-105 transition-transform duration-300">
-                            <h1 className="text-3xl md:text-4xl font-bold text-white [text-shadow:_0_0_30px_rgba(255,255,255,0.5)] tracking-wide">
-                                SRI SAI INTERIORS
-                            </h1>
-                            <div className="w-full h-1.5 bg-gradient-to-r from-amber-500 via-amber-300 to-amber-500 rounded-full mt-2 shadow-[0_0_30px_rgba(251,191,36,0.7)]"></div>
-                        </div>
-
-                        {/* Desktop Navigation */}
-                        <div className="hidden md:flex items-center space-x-8">
-                            {navItems.map((item) => (
-                                <Link 
-                                    key={item.href}
-                                    href={item.href} 
-                                    className={`text-white text-lg font-medium relative group transition-all duration-300 ease-in-out hover:text-xl hover:text-amber-300 ${pathname === item.href ? 'text-amber-300 font-semibold' : ''}`}
-                                >
-                                    <span className="relative z-10 flex items-center space-x-1">
-                                        <span className="text-sm">{item.icon}</span>
-                                        <span>{item.label}</span>
-                                    </span>
-                                    <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-amber-300 to-amber-500 transition-all duration-300 ease-in-out group-hover:w-full"></span>
-                                </Link>
-                            ))}
-                            
-                            {/* CTA Button */}
-                            <motion.div
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
+                            {/* Desktop Navigation */}
+                            <div className="flex items-center space-x-8">
+                                {navItems.map((item) => (
+                                    <Link 
+                                        key={item.href}
+                                        href={item.href} 
+                                        className={`text-gray-700 text-base font-medium transition-colors duration-300 hover:text-blue-600 ${pathname === item.href ? 'text-blue-600 font-semibold' : ''}`}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                ))}
+                                
+                                {/* CTA Button */}
                                 <Link 
                                     href="/contact" 
-                                    className="btn-primary text-sm px-4 py-2"
+                                    className="btn-primary"
                                 >
                                     Get Quote
                                 </Link>
-                            </motion.div>
+                            </div>
                         </div>
+                    </div>
 
-                        {/* Mobile Menu Button */}
-                        <motion.button
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors duration-300 touch-target"
-                            aria-label="Toggle menu"
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            <AnimatePresence mode="wait">
-                                {isMenuOpen ? (
-                                    <motion.svg 
-                                        key="close"
-                                        className="w-6 h-6" 
-                                        fill="none" 
-                                        stroke="currentColor" 
-                                        viewBox="0 0 24 24"
-                                        initial={{ rotate: -90, opacity: 0 }}
-                                        animate={{ rotate: 0, opacity: 1 }}
-                                        exit={{ rotate: 90, opacity: 0 }}
-                                        transition={{ duration: 0.2 }}
-                                    >
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                    </motion.svg>
-                                ) : (
-                                    <motion.svg 
-                                        key="menu"
-                                        className="w-6 h-6" 
-                                        fill="none" 
-                                        stroke="currentColor" 
-                                        viewBox="0 0 24 24"
-                                        initial={{ rotate: 90, opacity: 0 }}
-                                        animate={{ rotate: 0, opacity: 1 }}
-                                        exit={{ rotate: -90, opacity: 0 }}
-                                        transition={{ duration: 0.2 }}
-                                    >
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                                    </motion.svg>
-                                )}
-                            </AnimatePresence>
-                        </motion.button>
+                    {/* Mobile Header - Enhanced Design */}
+                    <div className="md:hidden">
+                        <div className={`bg-gradient-to-r from-blue-950/95 to-blue-900/95 backdrop-blur-md shadow-professional px-4 py-3 flex items-center justify-between min-h-[70px] transition-all duration-300 ${isScrolled ? 'bg-blue-950/98 shadow-elevated' : ''}`}>
+                            {/* Logo */}
+                            <motion.div 
+                                className="relative w-[200px] h-[60px] transition-all duration-500 hover:scale-105 cursor-pointer z-[60]"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <div className="relative z-[70] h-full">
+                                    <Image
+                                        src="/image/WhatsApp Image 2025-06-17 at 10.31.42_5ded47ec.png"
+                                        alt="SRI SAI INTERIORS Logo"
+                                        fill
+                                        quality={100}
+                                        sizes="200px"
+                                        className="object-contain p-1 transition-all duration-500"
+                                        priority
+                                        style={{
+                                            objectFit: 'contain',
+                                            objectPosition: 'center',
+                                            filter: 'drop-shadow(0 4px 12px rgba(255,255,255,0.3)) brightness(1.2) contrast(1.1)',
+                                        }}
+                                    />
+                                </div>
+                            </motion.div>
+
+                            {/* Company Name - Mobile */}
+                            <div className="relative transform hover:scale-105 transition-transform duration-300">
+                                <h1 className="text-lg font-bold text-white [text-shadow:_0_0_20px_rgba(255,255,255,0.5)] tracking-wide">
+                                    SRI SAI INTERIORS
+                                </h1>
+                                <div className="w-full h-1 bg-gradient-to-r from-amber-500 via-amber-300 to-amber-500 rounded-full mt-1 shadow-[0_0_20px_rgba(251,191,36,0.7)]"></div>
+                            </div>
+
+                            {/* Mobile Menu Button */}
+                            <motion.button
+                                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors duration-300 touch-target"
+                                aria-label="Toggle menu"
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <AnimatePresence mode="wait">
+                                    {isMenuOpen ? (
+                                        <motion.svg 
+                                            key="close"
+                                            className="w-6 h-6" 
+                                            fill="none" 
+                                            stroke="currentColor" 
+                                            viewBox="0 0 24 24"
+                                            initial={{ rotate: -90, opacity: 0 }}
+                                            animate={{ rotate: 0, opacity: 1 }}
+                                            exit={{ rotate: 90, opacity: 0 }}
+                                            transition={{ duration: 0.2 }}
+                                        >
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                        </motion.svg>
+                                    ) : (
+                                        <motion.svg 
+                                            key="menu"
+                                            className="w-6 h-6" 
+                                            fill="none" 
+                                            stroke="currentColor" 
+                                            viewBox="0 0 24 24"
+                                            initial={{ rotate: 90, opacity: 0 }}
+                                            animate={{ rotate: 0, opacity: 1 }}
+                                            exit={{ rotate: -90, opacity: 0 }}
+                                            transition={{ duration: 0.2 }}
+                                        >
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                                        </motion.svg>
+                                    )}
+                                </AnimatePresence>
+                            </motion.button>
+                        </div>
                     </div>
                 </div>
             </motion.header>
@@ -199,71 +203,85 @@ const Header = () => {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                         />
+                        
                         <motion.div 
-                            className="absolute right-0 top-0 bottom-0 w-[280px] bg-gradient-to-b from-blue-950/98 to-blue-900/98 backdrop-blur-lg shadow-elevated"
-                            initial={{ x: 280 }}
+                            className="absolute top-0 right-0 w-80 h-full bg-gradient-to-b from-blue-950 to-blue-900 shadow-2xl"
+                            initial={{ x: 320 }}
                             animate={{ x: 0 }}
-                            exit={{ x: 280 }}
+                            exit={{ x: 320 }}
                             transition={{ duration: 0.3, ease: "easeInOut" }}
                         >
-                            <div className="px-4 pt-20 pb-6 space-y-2">
-                                {/* Mobile Header Info */}
-                                <div className="mb-6 p-4 bg-white/10 rounded-lg">
-                                    <p className="text-white/80 text-sm mb-2">Ready to transform your space?</p>
-                                    <p className="text-amber-300 font-semibold">Call: +91 701 382 5454</p>
-                                </div>
-                                
-                                {navItems.map((item, index) => (
-                                    <motion.div
-                                        key={item.href}
-                                        initial={{ x: 50, opacity: 0 }}
-                                        animate={{ x: 0, opacity: 1 }}
-                                        transition={{ delay: index * 0.1 }}
+                            <div className="p-6 space-y-6">
+                                {/* Mobile Menu Header */}
+                                <div className="flex items-center justify-between">
+                                    <h2 className="text-xl font-bold text-white">Menu</h2>
+                                    <button 
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className="text-white hover:text-amber-300 transition-colors duration-300"
                                     >
-                                        <Link 
-                                            href={item.href} 
-                                            className={`mobile-nav-item ${pathname === item.href ? 'bg-amber-500/20 text-amber-300 border-l-4 border-amber-300' : ''}`}
-                                            onClick={() => setIsMenuOpen(false)}
+                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                {/* Navigation Items */}
+                                <nav className="space-y-2">
+                                    {navItems.map((item, index) => (
+                                        <motion.div
+                                            key={item.href}
+                                            initial={{ opacity: 0, x: 20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ duration: 0.3, delay: index * 0.1 }}
                                         >
-                                            <span className="flex items-center space-x-3">
-                                                <span className="text-xl">{item.icon}</span>
-                                                <span>{item.label}</span>
-                                            </span>
-                                        </Link>
-                                    </motion.div>
-                                ))}
-                                
+                                            <Link 
+                                                href={item.href}
+                                                className={`mobile-nav-item ${pathname === item.href ? 'bg-white/20 text-amber-300' : ''}`}
+                                                onClick={() => setIsMenuOpen(false)}
+                                            >
+                                                <span className="text-lg mr-3">{item.icon}</span>
+                                                {item.label}
+                                            </Link>
+                                        </motion.div>
+                                    ))}
+                                </nav>
+
                                 {/* Mobile CTA */}
                                 <motion.div
-                                    initial={{ x: 50, opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    transition={{ delay: navItems.length * 0.1 }}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.3, delay: 0.6 }}
                                     className="pt-4"
                                 >
                                     <Link 
-                                        href="/contact" 
+                                        href="/contact"
                                         className="btn-primary w-full text-center block"
                                         onClick={() => setIsMenuOpen(false)}
                                     >
                                         Get Free Quote
                                     </Link>
                                 </motion.div>
-                                
-                                {/* Social Links */}
+
+                                {/* Contact Info */}
                                 <motion.div
-                                    initial={{ x: 50, opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    transition={{ delay: (navItems.length + 1) * 0.1 }}
-                                    className="pt-6 border-t border-white/20"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.3, delay: 0.7 }}
+                                    className="pt-4 border-t border-white/20"
                                 >
-                                    <p className="text-white/60 text-sm mb-3">Follow us</p>
-                                    <div className="flex space-x-4">
-                                        <a href="https://wa.me/917013825454" className="text-white/80 hover:text-green-400 transition-colors">
-                                            <span className="text-2xl">📱</span>
-                                        </a>
-                                        <a href="mailto:Saiinteriors2015@gmail.com" className="text-white/80 hover:text-red-400 transition-colors">
-                                            <span className="text-2xl">📧</span>
-                                        </a>
+                                    <div className="space-y-3 text-white/80">
+                                        <div className="flex items-center space-x-3">
+                                            <span>📞</span>
+                                            <a href="tel:+917013825454" className="hover:text-amber-300 transition-colors duration-300">
+                                                +91 7013825454
+                                            </a>
+                                        </div>
+                                        <div className="flex items-center space-x-3">
+                                            <span>📧</span>
+                                            <a href="mailto:info@srisaiinteriors.com" className="hover:text-amber-300 transition-colors duration-300">
+                                                info@srisaiinteriors.com
+                                            </a>
+                                        </div>
                                     </div>
                                 </motion.div>
                             </div>

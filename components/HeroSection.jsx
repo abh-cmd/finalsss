@@ -93,9 +93,9 @@ const HeroSection = () => {
                             From concept to completion, we create stunning spaces that reflect your style.
                         </motion.p>
 
-                        {/* Features Grid */}
+                        {/* Features Grid - Desktop (Original) */}
                         <motion.div 
-                            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-3xl mx-auto"
+                            className="hidden md:grid grid-cols-4 gap-6 max-w-3xl mx-auto"
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
                             transition={{ duration: 0.8, delay: 0.6 }}
@@ -103,21 +103,69 @@ const HeroSection = () => {
                             {features.map((feature, index) => (
                                 <motion.div
                                     key={index}
-                                    className="bg-white/10 backdrop-blur-sm rounded-lg p-3 md:p-4 border border-white/20"
+                                    className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20"
                                     initial={{ opacity: 0, scale: 0.8 }}
                                     animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
                                     transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
                                     whileHover={{ scale: 1.05, y: -5 }}
                                 >
-                                    <div className="text-2xl md:text-3xl mb-2">{feature.icon}</div>
-                                    <p className="text-xs md:text-sm text-white font-medium">{feature.text}</p>
+                                    <div className="text-3xl mb-2">{feature.icon}</div>
+                                    <p className="text-sm text-white font-medium">{feature.text}</p>
                                 </motion.div>
                             ))}
                         </motion.div>
 
-                        {/* CTA Buttons */}
+                        {/* Features Grid - Mobile (Enhanced) */}
                         <motion.div 
-                            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                            className="md:hidden grid grid-cols-2 gap-4 max-w-3xl mx-auto"
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
+                            transition={{ duration: 0.8, delay: 0.6 }}
+                        >
+                            {features.map((feature, index) => (
+                                <motion.div
+                                    key={index}
+                                    className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20"
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
+                                    transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                                    whileHover={{ scale: 1.05, y: -5 }}
+                                >
+                                    <div className="text-2xl mb-2">{feature.icon}</div>
+                                    <p className="text-xs text-white font-medium">{feature.text}</p>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+
+                        {/* CTA Buttons - Desktop (Original) */}
+                        <motion.div 
+                            className="hidden md:flex gap-4 justify-center items-center"
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
+                            transition={{ duration: 0.8, delay: 1.0 }}
+                        >
+                            <motion.button
+                                onClick={handleConsultationClick}
+                                className="btn-primary text-lg px-8 py-3"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                Get Free Consultation
+                            </motion.button>
+
+                            <motion.a
+                                href="tel:+917013825454"
+                                className="btn-secondary text-lg px-8 py-3"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                Call Now
+                            </motion.a>
+                        </motion.div>
+
+                        {/* CTA Buttons - Mobile (Enhanced) */}
+                        <motion.div 
+                            className="md:hidden flex flex-col gap-4 justify-center items-center"
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
                             transition={{ duration: 0.8, delay: 1.0 }}
@@ -165,9 +213,9 @@ const HeroSection = () => {
                             </motion.a>
                         </motion.div>
 
-                        {/* Trust Indicators */}
+                        {/* Trust Indicators - Desktop (Original) */}
                         <motion.div 
-                            className="flex flex-wrap justify-center items-center gap-6 text-white/80 text-sm"
+                            className="hidden md:flex flex-wrap justify-center items-center gap-6 text-white/80 text-sm"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: isVisible ? 1 : 0 }}
                             transition={{ duration: 0.8, delay: 1.2 }}
@@ -185,56 +233,53 @@ const HeroSection = () => {
                                 <span>Quality Guaranteed</span>
                             </div>
                         </motion.div>
+
+                        {/* Trust Indicators - Mobile (Enhanced) */}
+                        <motion.div 
+                            className="md:hidden flex flex-wrap justify-center items-center gap-4 text-white/80 text-xs"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: isVisible ? 1 : 0 }}
+                            transition={{ duration: 0.8, delay: 1.2 }}
+                        >
+                            <div className="flex items-center space-x-1">
+                                <span>✅</span>
+                                <span>Free Quote</span>
+                            </div>
+                            <div className="flex items-center space-x-1">
+                                <span>✅</span>
+                                <span>No Hidden Costs</span>
+                            </div>
+                            <div className="flex items-center space-x-1">
+                                <span>✅</span>
+                                <span>Quality Guaranteed</span>
+                            </div>
+                        </motion.div>
                     </motion.div>
                 </div>
             </div>
 
-            {/* Floating Elements */}
+            {/* Floating Elements - Mobile Only */}
             <motion.div 
-                className="absolute top-1/4 left-4 md:left-8 text-4xl md:text-6xl opacity-20 animate-float"
+                className="md:hidden absolute top-1/4 left-4 text-4xl opacity-20 animate-float"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 0.2, x: 0 }}
                 transition={{ duration: 1, delay: 1.5 }}
             >
                 🏠
             </motion.div>
+
             <motion.div 
-                className="absolute bottom-1/4 right-4 md:right-8 text-4xl md:text-6xl opacity-20 animate-float"
-                style={{ animationDelay: '1s' }}
+                className="md:hidden absolute bottom-1/4 right-4 text-4xl opacity-20 animate-float"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 0.2, x: 0 }}
                 transition={{ duration: 1, delay: 1.7 }}
             >
-                ✨
-            </motion.div>
-
-            {/* Scroll Indicator */}
-            <motion.div 
-                className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 2 }}
-            >
-                <motion.div 
-                    className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                >
-                    <motion.div 
-                        className="w-1 h-3 bg-white/60 rounded-full mt-2"
-                        animate={{ y: [0, 12, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                    />
-                </motion.div>
-                <p className="text-xs mt-2 text-center">Scroll to explore</p>
+                🎨
             </motion.div>
 
             {/* Consultation Modal */}
-            <ConsultationModal 
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-            />
-
+            <ConsultationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            
             {/* WhatsApp Widget */}
             <WhatsAppWidget />
         </div>

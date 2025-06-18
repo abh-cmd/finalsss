@@ -40,45 +40,77 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Mobile-first responsive typography */
+/* Desktop typography (original design) */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1rem;
 }
 
-h1 { font-size: clamp(1.5rem, 4vw, 3rem); }
-h2 { font-size: clamp(1.25rem, 3vw, 2.5rem); }
-h3 { font-size: clamp(1.125rem, 2.5vw, 2rem); }
-h4 { font-size: clamp(1rem, 2vw, 1.5rem); }
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
 
 p {
-  font-size: clamp(0.875rem, 2vw, 1rem);
+  font-size: 1rem;
   line-height: 1.7;
   margin-bottom: 1rem;
 }
 
-/* Professional button styles */
+/* Mobile typography (enhanced) */
+@media (max-width: 768px) {
+  h1 { font-size: clamp(1.5rem, 4vw, 3rem); }
+  h2 { font-size: clamp(1.25rem, 3vw, 2.5rem); }
+  h3 { font-size: clamp(1.125rem, 2.5vw, 2rem); }
+  h4 { font-size: clamp(1rem, 2vw, 1.5rem); }
+  
+  p {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+  }
+}
+
+/* Desktop button styles (original) */
 .btn-primary {
-  @apply bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-amber-300/50;
+  @apply bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-all duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500;
 }
 
 .btn-secondary {
-  @apply bg-white text-blue-950 font-semibold py-3 px-6 rounded-full border-2 border-blue-950 transition-all duration-300 transform hover:scale-105 hover:bg-blue-950 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300/50;
+  @apply bg-white text-blue-600 font-semibold py-2 px-4 rounded border border-blue-600 transition-all duration-300 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500;
 }
 
-/* Card styles for mobile */
+/* Mobile button styles (enhanced) */
+@media (max-width: 768px) {
+  .btn-primary {
+    @apply bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-amber-300/50;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-blue-950 font-semibold py-3 px-6 rounded-full border-2 border-blue-950 transition-all duration-300 transform hover:scale-105 hover:bg-blue-950 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300/50;
+  }
+}
+
+/* Desktop card styles (original) */
 .card {
-  @apply bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:transform hover:scale-105;
+  @apply bg-white rounded-lg shadow-md p-4 transition-all duration-300 hover:shadow-lg;
+}
+
+/* Mobile card styles (enhanced) */
+@media (max-width: 768px) {
+  .card {
+    @apply bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:transform hover:scale-105;
+  }
 }
 
 .card-hover {
   @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
 }
 
-/* Mobile navigation enhancements */
-.mobile-nav-item {
-  @apply block w-full text-left px-4 py-3 text-lg font-medium text-white transition-all duration-300 hover:bg-white/10 hover:text-amber-300 rounded-lg;
+/* Mobile navigation enhancements (only on mobile) */
+@media (max-width: 768px) {
+  .mobile-nav-item {
+    @apply block w-full text-left px-4 py-3 text-lg font-medium text-white transition-all duration-300 hover:bg-white/10 hover:text-amber-300 rounded-lg;
+  }
 }
 
 /* Professional animations */
@@ -154,7 +186,7 @@ p {
   animation: float 3s ease-in-out infinite;
 }
 
-/* Mobile-specific enhancements */
+/* Mobile-specific enhancements (only on mobile) */
 @media (max-width: 768px) {
   .container {
     padding-left: 1rem;
@@ -198,45 +230,44 @@ p {
 }
 
 /* Fix for swiper */
-.swiper {
-  width: 100%;
-  height: 100%;
+.swiper-slide {
+  height: auto;
 }
 
-/* Enhanced lightbox */
+/* Lightbox styles */
 .yarl__container {
-  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
 }
 
-/* Professional scrollbar */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #f59e0b, #ea580c);
+  background: #888;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #d97706, #dc2626);
+  background: #555;
 }
 
-/* Loading states */
+/* Loading animation */
 .loading {
-  @apply animate-pulse bg-gray-200 rounded;
+  @apply animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600;
 }
 
-/* Professional focus states */
+/* Focus ring for accessibility */
 .focus-ring {
-  @apply focus:outline-none focus:ring-4 focus:ring-amber-300/50 focus:ring-offset-2;
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
 }
 
-/* Mobile gesture improvements */
+/* Mobile-specific touch targets and swipe areas */
 @media (max-width: 768px) {
   .touch-target {
     min-height: 44px;
@@ -245,27 +276,30 @@ p {
   
   .swipe-area {
     touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
-/* Professional gradients */
+/* Gradient utilities */
 .gradient-primary {
   background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
 }
 
 .gradient-secondary {
-  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+  background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
 }
 
 .gradient-accent {
   background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
 }
 
-/* Mobile performance optimizations */
+/* Mobile-specific optimizations */
 @media (max-width: 768px) {
   .mobile-optimize {
-    will-change: transform;
-    transform: translateZ(0);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
   }
   
   .mobile-reduce-motion {
@@ -274,7 +308,7 @@ p {
   }
 }
 
-/* Professional shadows */
+/* Shadow utilities */
 .shadow-professional {
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
@@ -283,15 +317,15 @@ p {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* Mobile-first spacing */
+/* Mobile spacing utilities */
 .space-mobile {
   @apply space-y-4 md:space-y-6;
 }
 
 .padding-mobile {
-  @apply p-4 md:p-6 lg:p-8;
+  @apply p-4 md:p-6;
 }
 
 .margin-mobile {
-  @apply m-4 md:m-6 lg:m-8;
+  @apply m-4 md:m-6;
 }
