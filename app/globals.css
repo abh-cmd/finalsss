@@ -40,7 +40,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Original Desktop Typography */
+/* Original Typography */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
@@ -58,7 +58,7 @@ p {
   margin-bottom: 1rem;
 }
 
-/* Original Desktop Button Styles */
+/* Original Button Styles */
 .btn-primary {
   @apply bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-all duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500;
 }
@@ -67,7 +67,7 @@ p {
   @apply bg-white text-blue-600 font-semibold py-2 px-4 rounded border border-blue-600 transition-all duration-300 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500;
 }
 
-/* Original Desktop Card Styles */
+/* Original Card Styles */
 .card {
   @apply bg-white rounded-lg shadow-md p-4 transition-all duration-300 hover:shadow-lg;
 }
@@ -76,44 +76,7 @@ p {
   @apply transition-all duration-300 hover:shadow-lg;
 }
 
-/* Mobile Typography (Enhanced) */
-@media (max-width: 768px) {
-  h1 { font-size: clamp(1.5rem, 4vw, 3rem); }
-  h2 { font-size: clamp(1.25rem, 3vw, 2.5rem); }
-  h3 { font-size: clamp(1.125rem, 2.5vw, 2rem); }
-  h4 { font-size: clamp(1rem, 2vw, 1.5rem); }
-  
-  p {
-    font-size: clamp(0.875rem, 2vw, 1rem);
-  }
-}
-
-/* Mobile Button Styles (Enhanced) */
-@media (max-width: 768px) {
-  .btn-primary {
-    @apply bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-amber-300/50;
-  }
-
-  .btn-secondary {
-    @apply bg-white text-blue-950 font-semibold py-3 px-6 rounded-full border-2 border-blue-950 transition-all duration-300 transform hover:scale-105 hover:bg-blue-950 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300/50;
-  }
-}
-
-/* Mobile Card Styles (Enhanced) */
-@media (max-width: 768px) {
-  .card {
-    @apply bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:transform hover:scale-105;
-  }
-}
-
-/* Mobile Navigation Enhancements (only on mobile) */
-@media (max-width: 768px) {
-  .mobile-nav-item {
-    @apply block w-full text-left px-4 py-3 text-lg font-medium text-white transition-all duration-300 hover:bg-white/10 hover:text-amber-300 rounded-lg;
-  }
-}
-
-/* Basic Animations (Original) */
+/* Basic Animations */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -130,121 +93,13 @@ p {
   }
 }
 
-/* Animation Classes (Original) */
+/* Animation Classes */
 .animate-fade-in {
   animation: fadeIn 0.6s ease-out forwards;
 }
 
 .animate-slide-in-up {
   animation: slideInUp 0.6s ease-out forwards;
-}
-
-/* Mobile-specific animations */
-@media (max-width: 768px) {
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.05);
-    }
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  .animate-fade-in-up {
-    animation: fadeInUp 0.6s ease-out forwards;
-  }
-
-  .animate-slide-in-left {
-    animation: slideInLeft 0.6s ease-out forwards;
-  }
-
-  .animate-slide-in-right {
-    animation: slideInRight 0.6s ease-out forwards;
-  }
-
-  .animate-pulse-slow {
-    animation: pulse 2s infinite;
-  }
-
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-}
-
-/* Mobile-specific enhancements (only on mobile) */
-@media (max-width: 768px) {
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  .mobile-padding {
-    padding: 1rem;
-  }
-  
-  .mobile-margin {
-    margin: 1rem;
-  }
-  
-  /* Touch-friendly buttons */
-  .btn-primary, .btn-secondary {
-    min-height: 48px;
-    min-width: 120px;
-  }
-  
-  /* Mobile-optimized cards */
-  .card {
-    margin: 0.5rem;
-    border-radius: 1rem;
-  }
-  
-  /* Mobile navigation */
-  .mobile-nav {
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-  }
 }
 
 /* Fix for slick carousel */
@@ -294,79 +149,12 @@ p {
   @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
 }
 
-/* Mobile-specific touch targets and swipe areas */
-@media (max-width: 768px) {
-  .touch-target {
-    min-height: 44px;
-    min-width: 44px;
-  }
-  
-  .swipe-area {
-    touch-action: pan-y;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
-/* Gradient utilities (Mobile only) */
-@media (max-width: 768px) {
-  .gradient-primary {
-    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-  }
-
-  .gradient-secondary {
-    background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
-  }
-
-  .gradient-accent {
-    background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
-  }
-}
-
-/* Mobile-specific optimizations */
-@media (max-width: 768px) {
-  .mobile-optimize {
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
-  }
-  
-  .mobile-reduce-motion {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-/* Shadow utilities (Original) */
+/* Shadow utilities */
 .shadow-light {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .shadow-medium {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-/* Mobile shadow utilities */
-@media (max-width: 768px) {
-  .shadow-professional {
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  }
-
-  .shadow-elevated {
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  }
-}
-
-/* Spacing utilities */
-.space-mobile {
-  @apply space-y-4 md:space-y-6;
-}
-
-.padding-mobile {
-  @apply p-4 md:p-6;
-}
-
-.margin-mobile {
-  @apply m-4 md:m-6;
 }
 

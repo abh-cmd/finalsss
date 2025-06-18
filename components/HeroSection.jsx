@@ -59,93 +59,47 @@ const HeroSection = () => {
                             Transform your space into a masterpiece with our expert interior design services. From concept to completion, we bring your vision to life.
                         </p>
 
-                        {/* Features Grid - Desktop */}
-                        <div className="hidden md:grid grid-cols-4 gap-6 max-w-3xl mx-auto">
+                        {/* Features Grid */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-3xl mx-auto">
                             {features.map((feature, index) => (
                                 <div
                                     key={index}
-                                    className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20"
+                                    className="bg-white/10 backdrop-blur-sm rounded-lg p-3 md:p-4 border border-white/20"
                                 >
-                                    <div className="text-3xl mb-2">{feature.icon}</div>
-                                    <p className="text-sm text-white font-medium">{feature.text}</p>
+                                    <div className="text-2xl md:text-3xl mb-2">{feature.icon}</div>
+                                    <p className="text-xs md:text-sm text-white font-medium">{feature.text}</p>
                                 </div>
                             ))}
                         </div>
 
-                        {/* Features Grid - Mobile */}
-                        <div className="md:hidden grid grid-cols-2 gap-4 max-w-3xl mx-auto">
-                            {features.map((feature, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20"
-                                >
-                                    <div className="text-2xl mb-2">{feature.icon}</div>
-                                    <p className="text-xs text-white font-medium">{feature.text}</p>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* CTA Buttons - Desktop */}
-                        <div className="hidden md:flex gap-4 justify-center items-center">
+                        {/* CTA Buttons */}
+                        <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
                             <button
                                 onClick={handleConsultationClick}
-                                className="btn-primary text-lg px-8 py-3"
+                                className="btn-primary text-lg px-8 py-3 md:py-3 w-full md:w-auto"
                             >
                                 Get Free Consultation
                             </button>
 
                             <a
                                 href="tel:+917013825454"
-                                className="btn-secondary text-lg px-8 py-3"
+                                className="btn-secondary text-lg px-8 py-3 md:py-3 w-full md:w-auto text-center"
                             >
                                 Call Now
                             </a>
                         </div>
 
-                        {/* CTA Buttons - Mobile */}
-                        <div className="md:hidden flex flex-col gap-4 justify-center items-center">
-                            <button
-                                onClick={handleConsultationClick}
-                                className="btn-primary text-lg px-8 py-4 min-w-[200px]"
-                            >
-                                Get Free Consultation
-                            </button>
-
-                            <a
-                                href="tel:+917013825454"
-                                className="btn-secondary text-lg px-8 py-4 min-w-[200px] text-center"
-                            >
-                                Call Now
-                            </a>
-                        </div>
-
-                        {/* Trust Indicators - Desktop */}
-                        <div className="hidden md:flex flex-wrap justify-center items-center gap-6 text-white/80 text-sm">
-                            <div className="flex items-center space-x-2">
+                        {/* Trust Indicators */}
+                        <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 text-white/80 text-xs md:text-sm">
+                            <div className="flex items-center space-x-1 md:space-x-2">
                                 <span>✅</span>
                                 <span>Free Quote</span>
                             </div>
-                            <div className="flex items-center space-x-2">
+                            <div className="flex items-center space-x-1 md:space-x-2">
                                 <span>✅</span>
                                 <span>No Hidden Costs</span>
                             </div>
-                            <div className="flex items-center space-x-2">
-                                <span>✅</span>
-                                <span>Quality Guaranteed</span>
-                            </div>
-                        </div>
-
-                        {/* Trust Indicators - Mobile */}
-                        <div className="md:hidden flex flex-wrap justify-center items-center gap-4 text-white/80 text-xs">
-                            <div className="flex items-center space-x-1">
-                                <span>✅</span>
-                                <span>Free Quote</span>
-                            </div>
-                            <div className="flex items-center space-x-1">
-                                <span>✅</span>
-                                <span>No Hidden Costs</span>
-                            </div>
-                            <div className="flex items-center space-x-1">
+                            <div className="flex items-center space-x-1 md:space-x-2">
                                 <span>✅</span>
                                 <span>Quality Guaranteed</span>
                             </div>
