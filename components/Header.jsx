@@ -38,25 +38,25 @@ const Header = () => {
                 <div className="container mx-auto px-4 md:px-8 py-4">
                     <div className="flex items-center justify-between">
                         {/* Enhanced Logo with Effects */}
-                        <div className="relative w-[220px] h-[70px] transform hover:scale-105 transition-all duration-300">
+                        <div className="relative w-[280px] h-[90px] transform hover:scale-105 transition-all duration-300">
                             <Image
                                 src="/image/WhatsApp Image 2025-06-17 at 10.31.42_5ded47ec.png"
                                 alt="SRI SAI INTERIORS Logo"
                                 fill
                                 quality={100}
-                                sizes="220px"
-                                className="object-contain drop-shadow-lg filter brightness-110"
+                                sizes="280px"
+                                className="object-contain drop-shadow-2xl filter brightness-125"
                                 priority
                             />
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
                         </div>
 
                         {/* Center Title with Enhanced Effects */}
                         <div className="hidden lg:flex flex-col items-center">
-                            <h1 className="text-3xl font-bold text-white tracking-wider mb-2 animate-pulse drop-shadow-lg">
+                            <h1 className="text-5xl font-bold text-white tracking-wider mb-3 animate-pulse drop-shadow-2xl glow-text">
                                 SRI SAI INTERIORS
                             </h1>
-                            <div className="w-20 h-1.5 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full shadow-lg animate-bounce filter brightness-110"></div>
+                            <div className="w-full h-2 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-400 rounded-full shadow-2xl animate-bounce filter brightness-125 glow-line"></div>
                         </div>
 
                         {/* Enhanced Desktop Navigation */}
@@ -65,7 +65,7 @@ const Header = () => {
                                 <Link 
                                     key={item.href}
                                     href={item.href} 
-                                    className={`text-white text-lg font-semibold transition-all duration-300 hover:text-blue-200 hover:scale-110 hover:drop-shadow-lg ${pathname === item.href ? 'text-blue-200 font-bold drop-shadow-md' : ''}`}
+                                    className={`text-white text-xl font-bold transition-all duration-300 hover:text-blue-200 hover:scale-110 hover:drop-shadow-lg ${pathname === item.href ? 'text-blue-200 font-bold drop-shadow-md' : ''}`}
                                 >
                                     {item.label}
                                 </Link>
@@ -78,7 +78,7 @@ const Header = () => {
                             className="md:hidden text-white p-2 hover:bg-blue-700/50 rounded-lg transition-all duration-300 hover:scale-110"
                             aria-label="Toggle menu"
                         >
-                            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                             </svg>
                         </button>
@@ -86,10 +86,10 @@ const Header = () => {
 
                     {/* Enhanced Mobile Title */}
                     <div className="lg:hidden flex flex-col items-center mt-4">
-                        <h1 className="text-2xl font-bold text-white tracking-wider mb-2 animate-pulse drop-shadow-lg">
+                        <h1 className="text-3xl font-bold text-white tracking-wider mb-3 animate-pulse drop-shadow-2xl glow-text">
                             SRI SAI INTERIORS
                         </h1>
-                        <div className="w-16 h-1 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full shadow-lg animate-bounce filter brightness-110"></div>
+                        <div className="w-full h-1.5 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-400 rounded-full shadow-2xl animate-bounce filter brightness-125 glow-line"></div>
                     </div>
                 </div>
 
@@ -102,7 +102,7 @@ const Header = () => {
                                     <Link 
                                         key={item.href}
                                         href={item.href}
-                                        className={`block px-4 py-3 text-white hover:bg-blue-700/50 rounded-lg transition-all duration-300 text-lg font-semibold ${pathname === item.href ? 'bg-blue-700/50 text-blue-200 font-bold' : ''}`}
+                                        className={`block px-4 py-3 text-white hover:bg-blue-700/50 rounded-lg transition-all duration-300 text-xl font-bold ${pathname === item.href ? 'bg-blue-700/50 text-blue-200 font-bold' : ''}`}
                                         onClick={() => setIsMenuOpen(false)}
                                     >
                                         {item.label}
