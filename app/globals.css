@@ -176,21 +176,52 @@ p {
   }
 }
 
-@keyframes glow {
+@keyframes glowText {
   0%, 100% {
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.4);
+    text-shadow: 
+      0 0 5px rgba(255, 255, 255, 0.8),
+      0 0 10px rgba(255, 255, 255, 0.6),
+      0 0 15px rgba(255, 255, 255, 0.4),
+      0 0 20px rgba(255, 255, 255, 0.2);
   }
   50% {
-    text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8), 0 0 50px rgba(255, 255, 255, 0.6);
+    text-shadow: 
+      0 0 10px rgba(255, 255, 255, 1),
+      0 0 20px rgba(255, 255, 255, 0.8),
+      0 0 30px rgba(255, 255, 255, 0.6),
+      0 0 40px rgba(255, 255, 255, 0.4);
   }
 }
 
-@keyframes lineGlow {
+@keyframes glowTextYellow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(251, 191, 36, 0.8), 0 0 30px rgba(251, 191, 36, 0.6), 0 0 40px rgba(251, 191, 36, 0.4);
+    text-shadow: 
+      0 0 5px rgba(255, 193, 7, 0.8),
+      0 0 10px rgba(255, 193, 7, 0.6),
+      0 0 15px rgba(255, 193, 7, 0.4),
+      0 0 20px rgba(255, 193, 7, 0.2);
   }
   50% {
-    box-shadow: 0 0 30px rgba(251, 191, 36, 1), 0 0 40px rgba(251, 191, 36, 0.8), 0 0 50px rgba(251, 191, 36, 0.6);
+    text-shadow: 
+      0 0 10px rgba(255, 193, 7, 1),
+      0 0 20px rgba(255, 193, 7, 0.8),
+      0 0 30px rgba(255, 193, 7, 0.6),
+      0 0 40px rgba(255, 193, 7, 0.4);
+  }
+}
+
+@keyframes glowLine {
+  0%, 100% {
+    box-shadow: 
+      0 0 5px rgba(255, 193, 7, 0.8),
+      0 0 10px rgba(255, 193, 7, 0.6),
+      0 0 15px rgba(255, 193, 7, 0.4);
+  }
+  50% {
+    box-shadow: 
+      0 0 10px rgba(255, 193, 7, 1),
+      0 0 20px rgba(255, 193, 7, 0.8),
+      0 0 30px rgba(255, 193, 7, 0.6);
   }
 }
 
@@ -232,11 +263,117 @@ p {
 }
 
 .glow-text {
-  animation: glow 2s ease-in-out infinite;
+  animation: glowText 2s ease-in-out infinite;
 }
 
 .glow-line {
-  animation: lineGlow 2s ease-in-out infinite;
+  animation: glowLine 2s ease-in-out infinite;
+}
+
+/* Desktop-specific effects */
+.glow-text-desktop {
+  animation: glowText 3s ease-in-out infinite;
+}
+
+.glow-text-yellow {
+  animation: glowTextYellow 3s ease-in-out infinite;
+}
+
+.glow-line-desktop {
+  animation: glowLine 3s ease-in-out infinite;
+}
+
+/* Mobile-specific effects */
+.glow-text-mobile {
+  animation: glowText 2.5s ease-in-out infinite;
+}
+
+.glow-text-yellow-mobile {
+  animation: glowTextYellow 2.5s ease-in-out infinite;
+}
+
+.glow-line-mobile {
+  animation: glowLine 2.5s ease-in-out infinite;
+}
+
+/* Enhanced glassmorphism effects */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-effect-mobile {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Enhanced button effects */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-glow:hover::before {
+  left: 100%;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  .text-responsive {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+@media (min-width: 769px) {
+  .text-responsive {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+}
+
+/* Enhanced focus states */
+.focus-enhanced:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: rgba(255, 193, 7, 0.5);
+  ring-offset: 2px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 /* Fix for slick carousel */
@@ -295,11 +432,6 @@ p {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
 /* Custom button styles */
 .btn-primary {
   @apply bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg;
@@ -340,11 +472,6 @@ html {
   .mobile-button-enhanced {
     @apply px-6 py-4 text-lg font-bold rounded-xl shadow-xl;
   }
-}
-
-/* Enhanced focus states */
-.focus-enhanced:focus {
-  @apply outline-none ring-4 ring-blue-300/50 ring-offset-2;
 }
 
 /* Loading states */
