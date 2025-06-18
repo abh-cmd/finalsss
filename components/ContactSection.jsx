@@ -42,13 +42,6 @@ const ContactSection = () => {
         }
     ];
 
-    const trustFactors = [
-        { icon: "⭐", text: "15+ Years Experience" },
-        { icon: "🏆", text: "500+ Projects" },
-        { icon: "💎", text: "Premium Quality" },
-        { icon: "🛡️", text: "100% Satisfaction" }
-    ];
-
     return (
         <section className="py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white">
             <div className="container mx-auto px-4">
@@ -66,27 +59,6 @@ const ContactSection = () => {
                     <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
                         Ready to transform your space? Contact us today for a free consultation and quote.
                     </p>
-                </motion.div>
-
-                {/* Trust Factors */}
-                <motion.div 
-                    className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    viewport={{ once: true }}
-                >
-                    {trustFactors.map((factor, index) => (
-                        <motion.div
-                            key={index}
-                            className="text-center p-4 bg-white rounded-xl shadow-sm border border-gray-100"
-                            whileHover={{ scale: 1.05, y: -5 }}
-                            transition={{ duration: 0.3 }}
-                        >
-                            <div className="text-2xl md:text-3xl mb-2">{factor.icon}</div>
-                            <p className="text-sm md:text-base font-medium text-gray-700">{factor.text}</p>
-                        </motion.div>
-                    ))}
                 </motion.div>
 
                 {/* Contact Cards */}

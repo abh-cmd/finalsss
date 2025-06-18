@@ -27,13 +27,6 @@ const HeroSection = () => {
         setIsModalOpen(true);
     };
 
-    const features = [
-        { icon: "✨", text: "15+ Years Experience" },
-        { icon: "🏆", text: "500+ Projects Completed" },
-        { icon: "⭐", text: "4.9/5 Customer Rating" },
-        { icon: "💰", text: "Free Consultation" }
-    ];
-
     return (
         <div className="relative min-h-screen overflow-hidden">
             {/* Background Video - Enhanced */}
@@ -73,19 +66,6 @@ const HeroSection = () => {
                             Transform your space into a masterpiece with our expert interior design services. From concept to completion, we bring your vision to life.
                         </p>
 
-                        {/* Features Grid */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-3xl mx-auto">
-                            {features.map((feature, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-white/10 backdrop-blur-sm rounded-lg p-3 md:p-4 border border-white/20"
-                                >
-                                    <div className="text-2xl md:text-3xl mb-2">{feature.icon}</div>
-                                    <p className="text-xs md:text-sm text-white font-medium">{feature.text}</p>
-                                </div>
-                            ))}
-                        </div>
-
                         {/* CTA Button - Orange */}
                         <div className="flex justify-center">
                             <button
@@ -94,22 +74,6 @@ const HeroSection = () => {
                             >
                                 Get Free Consultation
                             </button>
-                        </div>
-
-                        {/* Trust Indicators */}
-                        <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 text-white/80 text-xs md:text-sm">
-                            <div className="flex items-center space-x-1 md:space-x-2">
-                                <span>✅</span>
-                                <span>Free Quote</span>
-                            </div>
-                            <div className="flex items-center space-x-1 md:space-x-2">
-                                <span>✅</span>
-                                <span>No Hidden Costs</span>
-                            </div>
-                            <div className="flex items-center space-x-1 md:space-x-2">
-                                <span>✅</span>
-                                <span>Quality Guaranteed</span>
-                            </div>
                         </div>
                     </div>
                 </div>
