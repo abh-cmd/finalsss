@@ -54,12 +54,12 @@ const Header = () => {
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
                         </div>
 
-                        {/* Center Title with Reduced Effects */}
+                        {/* Center Title with No Glow Effects */}
                         <div className="flex flex-col items-center">
-                            <h1 className="text-5xl font-black text-white tracking-widest mb-4 animate-pulse drop-shadow-xl glow-text-subtle font-serif">
+                            <h1 className="text-5xl font-black text-white tracking-widest mb-4 animate-pulse drop-shadow-xl font-serif">
                                 SRI SAI INTERIORS
                             </h1>
-                            <div className="w-full h-2 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-400 rounded-full shadow-xl animate-bounce filter brightness-110 glow-line-subtle"></div>
+                            <div className="w-full h-2 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-400 rounded-full shadow-lg animate-bounce filter brightness-110"></div>
                         </div>
 
                         {/* Enhanced Desktop Navigation */}
@@ -113,10 +113,10 @@ const Header = () => {
 
                     {/* Mobile Title */}
                     <div className="flex flex-col items-center mt-3">
-                        <h1 className="text-xl font-black text-white tracking-wider mb-2 animate-pulse drop-shadow-lg glow-text-subtle-mobile font-serif">
+                        <h1 className="text-xl font-black text-white tracking-wider mb-2 animate-pulse drop-shadow-lg font-serif">
                             SRI SAI INTERIORS
                         </h1>
-                        <div className="w-full h-1 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-400 rounded-full shadow-lg animate-bounce filter brightness-110 glow-line-subtle-mobile"></div>
+                        <div className="w-full h-1 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-400 rounded-full shadow-lg animate-bounce filter brightness-110"></div>
                     </div>
                 </div>
 
