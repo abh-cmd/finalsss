@@ -76,64 +76,6 @@ p {
   @apply transition-all duration-300 hover:shadow-lg;
 }
 
-/* Laptop-specific styles (1024px and above) */
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-  
-  /* Laptop header improvements */
-  header {
-    padding: 0.75rem 0;
-  }
-  
-  /* Laptop navigation hover effects */
-  .header-nav-link {
-    position: relative;
-    transition: all 0.3s ease;
-  }
-  
-  .header-nav-link:hover {
-    transform: translateY(-2px);
-  }
-  
-  /* Laptop hero section improvements */
-  .hero-content {
-    padding: 2rem 0;
-  }
-  
-  /* Laptop button improvements */
-  .btn-primary, .btn-secondary {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 0.5rem;
-  }
-}
-
-/* Mobile styles (below 1024px) */
-@media (max-width: 1023px) {
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  /* Mobile-specific adjustments */
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.5rem; }
-  h3 { font-size: 1.25rem; }
-  
-  /* Mobile button adjustments */
-  .btn-primary, .btn-secondary {
-    padding: 0.75rem 1rem;
-    font-size: 0.875rem;
-    width: 100%;
-    text-align: center;
-  }
-}
-
 /* Basic Animations */
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -214,63 +156,5 @@ p {
 
 .shadow-medium {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-/* Laptop-specific layout improvements */
-@media (min-width: 1024px) {
-  /* Better spacing for laptop screens */
-  .hero-section {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Improved text sizing for laptop */
-  .hero-title {
-    font-size: clamp(3rem, 5vw, 4.5rem);
-    line-height: 1.1;
-  }
-  
-  .hero-subtitle {
-    font-size: clamp(1.125rem, 2vw, 1.25rem);
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  /* Better button sizing for laptop */
-  .hero-cta {
-    font-size: 1.125rem;
-    padding: 1rem 2rem;
-    min-width: 200px;
-  }
-}
-
-/* Mobile-specific layout improvements */
-@media (max-width: 1023px) {
-  /* Mobile hero adjustments */
-  .hero-section {
-    min-height: 100vh;
-    padding: 2rem 1rem;
-  }
-  
-  /* Mobile text sizing */
-  .hero-title {
-    font-size: clamp(2rem, 8vw, 3rem);
-    line-height: 1.2;
-  }
-  
-  .hero-subtitle {
-    font-size: clamp(1rem, 4vw, 1.125rem);
-    max-width: 100%;
-  }
-  
-  /* Mobile button adjustments */
-  .hero-cta {
-    font-size: 1rem;
-    padding: 0.875rem 1.5rem;
-    width: 100%;
-    max-width: 300px;
-  }
 }
 

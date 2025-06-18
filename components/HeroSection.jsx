@@ -8,19 +8,11 @@ import WhatsAppWidget from "./WhatsAppWidget";
 const HeroSection = () => {
     const videoRef = useRef(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         if (videoRef.current) {
             videoRef.current.playbackRate = 1.0;
         }
-        
-        // Trigger animation after component mounts
-        const timer = setTimeout(() => {
-            setIsVisible(true);
-        }, 100);
-        
-        return () => clearTimeout(timer);
     }, []);
 
     const handleConsultationClick = () => {
@@ -29,11 +21,11 @@ const HeroSection = () => {
 
     return (
         <div className="relative min-h-screen overflow-hidden">
-            {/* Background Video - Enhanced */}
+            {/* Background Video */}
             <div className="absolute inset-0 z-0">
                 <video
                     ref={videoRef}
-                    className="w-full h-full object-cover brightness-90 scale-105"
+                    className="w-full h-full object-cover brightness-75"
                     autoPlay
                     loop
                     muted
@@ -42,7 +34,7 @@ const HeroSection = () => {
                 >
                     Your browser does not support the video tag.
                 </video>
-                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
             </div>
 
             {/* Main Content */}
@@ -50,30 +42,31 @@ const HeroSection = () => {
                 <div className="w-full max-w-4xl mx-auto">
                     {/* Hero Content */}
                     <div className="text-center space-y-8">
-                        {/* Main Heading with Transparent Box and Animation */}
-                        <div 
-                            className={`inline-block bg-black/40 backdrop-blur-sm rounded-lg p-6 md:p-8 border border-white/20 transition-all duration-1000 ease-out ${
-                                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
-                            }`}
-                        >
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                                Welcome to Sri Sai Interiors
-                            </h1>
-                        </div>
+                        {/* Main Heading */}
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                            Welcome to Sri Sai Interiors
+                        </h1>
 
                         {/* Subtitle */}
                         <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
                             Transform your space into a masterpiece with our expert interior design services. From concept to completion, we bring your vision to life.
                         </p>
 
-                        {/* CTA Button - Orange */}
-                        <div className="flex justify-center">
+                        {/* CTA Buttons */}
+                        <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
                             <button
                                 onClick={handleConsultationClick}
-                                className="bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold text-lg px-8 py-3 rounded-lg transition-all duration-300 hover:from-orange-600 hover:to-orange-700 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-4 focus:ring-orange-300/50"
+                                className="btn-primary text-lg px-8 py-3 md:py-3 w-full md:w-auto"
                             >
                                 Get Free Consultation
                             </button>
+
+                            <a
+                                href="tel:+917013825454"
+                                className="btn-secondary text-lg px-8 py-3 md:py-3 w-full md:w-auto text-center"
+                            >
+                                Call Now
+                            </a>
                         </div>
                     </div>
                 </div>

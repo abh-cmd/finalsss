@@ -35,30 +35,28 @@ const Header = () => {
     return (
         <>
             <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
-                <div className="container mx-auto px-4 lg:px-8 py-4">
+                <div className="container mx-auto px-4 md:px-8 py-4">
                     <div className="flex items-center justify-between">
                         {/* Logo */}
-                        <div className="relative w-[180px] lg:w-[200px] h-[50px] lg:h-[60px] flex-shrink-0">
+                        <div className="relative w-[200px] h-[60px]">
                             <Image
                                 src="/image/WhatsApp Image 2025-06-17 at 10.31.42_5ded47ec.png"
                                 alt="SRI SAI INTERIORS Logo"
                                 fill
                                 quality={100}
-                                sizes="(max-width: 1024px) 180px, 200px"
+                                sizes="200px"
                                 className="object-contain"
                                 priority
                             />
                         </div>
 
                         {/* Desktop Navigation */}
-                        <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+                        <div className="hidden md:flex items-center space-x-8">
                             {navItems.map((item) => (
                                 <Link 
                                     key={item.href}
                                     href={item.href} 
-                                    className={`text-gray-700 text-base font-medium transition-all duration-300 hover:text-blue-600 hover:text-lg hover:font-semibold ${
-                                        pathname === item.href ? 'text-blue-600 font-semibold' : ''
-                                    }`}
+                                    className={`text-gray-700 text-base font-medium transition-colors duration-300 hover:text-blue-600 ${pathname === item.href ? 'text-blue-600 font-semibold' : ''}`}
                                 >
                                     {item.label}
                                 </Link>
@@ -67,7 +65,7 @@ const Header = () => {
                             {/* CTA Button */}
                             <Link 
                                 href="/contact" 
-                                className="btn-primary ml-4"
+                                className="btn-primary"
                             >
                                 Get Quote
                             </Link>
@@ -76,7 +74,7 @@ const Header = () => {
                         {/* Mobile Menu Button */}
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="lg:hidden text-gray-700 p-2 hover:bg-gray-100 rounded-lg transition-colors duration-300"
+                            className="md:hidden text-gray-700 p-2 hover:bg-gray-100 rounded-lg transition-colors duration-300"
                             aria-label="Toggle menu"
                         >
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -88,16 +86,14 @@ const Header = () => {
 
                 {/* Mobile Menu */}
                 {isMenuOpen && (
-                    <div className="lg:hidden bg-white border-t border-gray-200">
+                    <div className="md:hidden bg-white border-t border-gray-200">
                         <div className="container mx-auto px-4 py-4">
                             <nav className="space-y-2">
                                 {navItems.map((item) => (
                                     <Link 
                                         key={item.href}
                                         href={item.href}
-                                        className={`block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-300 ${
-                                            pathname === item.href ? 'bg-blue-50 text-blue-600 font-semibold' : ''
-                                        }`}
+                                        className={`block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-300 ${pathname === item.href ? 'bg-blue-50 text-blue-600 font-semibold' : ''}`}
                                         onClick={() => setIsMenuOpen(false)}
                                     >
                                         {item.label}
