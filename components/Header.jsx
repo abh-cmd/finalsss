@@ -50,13 +50,21 @@ const Header = () => {
                             />
                         </div>
 
+                        {/* Center Title with Effects */}
+                        <div className="hidden lg:flex flex-col items-center">
+                            <h1 className="text-2xl font-bold text-white tracking-wider mb-1 animate-pulse">
+                                SRI SAI INTERIORS
+                            </h1>
+                            <div className="w-16 h-1 bg-yellow-400 rounded-full shadow-lg animate-bounce"></div>
+                        </div>
+
                         {/* Desktop Navigation */}
                         <div className="hidden md:flex items-center space-x-8">
                             {navItems.map((item) => (
                                 <Link 
                                     key={item.href}
                                     href={item.href} 
-                                    className={`text-white text-base font-medium transition-colors duration-300 hover:text-blue-200 ${pathname === item.href ? 'text-blue-200 font-semibold' : ''}`}
+                                    className={`text-white text-base font-medium transition-all duration-300 hover:text-blue-200 hover:scale-105 ${pathname === item.href ? 'text-blue-200 font-semibold' : ''}`}
                                 >
                                     {item.label}
                                 </Link>
@@ -73,6 +81,14 @@ const Header = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                             </svg>
                         </button>
+                    </div>
+
+                    {/* Mobile Title */}
+                    <div className="lg:hidden flex flex-col items-center mt-4">
+                        <h1 className="text-xl font-bold text-white tracking-wider mb-1 animate-pulse">
+                            SRI SAI INTERIORS
+                        </h1>
+                        <div className="w-12 h-0.5 bg-yellow-400 rounded-full shadow-lg animate-bounce"></div>
                     </div>
                 </div>
 
