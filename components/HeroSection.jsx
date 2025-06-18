@@ -4,10 +4,12 @@ import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import ConsultationModal from "./ConsultationModal";
 import WhatsAppWidget from "./WhatsAppWidget";
+import PhonePopup from "./PhonePopup";
 
 const HeroSection = () => {
     const videoRef = useRef(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isPhonePopupOpen, setIsPhonePopupOpen] = useState(false);
 
     useEffect(() => {
         if (videoRef.current) {
@@ -17,6 +19,10 @@ const HeroSection = () => {
 
     const handleConsultationClick = () => {
         setIsModalOpen(true);
+    };
+
+    const handlePhoneClick = () => {
+        setIsPhonePopupOpen(true);
     };
 
     return (
@@ -61,12 +67,12 @@ const HeroSection = () => {
                                 Get Free Consultation
                             </button>
 
-                            <a
-                                href="tel:+917013825454"
+                            <button
+                                onClick={handlePhoneClick}
                                 className="btn-secondary text-lg px-8 py-3 md:py-3 w-full md:w-auto text-center"
                             >
                                 Call Now
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -74,6 +80,9 @@ const HeroSection = () => {
 
             {/* Consultation Modal */}
             <ConsultationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            
+            {/* Phone Popup */}
+            <PhonePopup isOpen={isPhonePopupOpen} onClose={() => setIsPhonePopupOpen(false)} />
             
             {/* WhatsApp Widget */}
             <WhatsAppWidget />

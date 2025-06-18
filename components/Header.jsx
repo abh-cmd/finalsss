@@ -34,7 +34,7 @@ const Header = () => {
 
     return (
         <>
-            <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+            <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-blue-900/90 backdrop-blur-md shadow-lg' : 'bg-blue-800/80 backdrop-blur-sm'}`}>
                 <div className="container mx-auto px-4 md:px-8 py-4">
                     <div className="flex items-center justify-between">
                         {/* Logo */}
@@ -56,25 +56,17 @@ const Header = () => {
                                 <Link 
                                     key={item.href}
                                     href={item.href} 
-                                    className={`text-gray-700 text-base font-medium transition-colors duration-300 hover:text-blue-600 ${pathname === item.href ? 'text-blue-600 font-semibold' : ''}`}
+                                    className={`text-white text-base font-medium transition-colors duration-300 hover:text-blue-200 ${pathname === item.href ? 'text-blue-200 font-semibold' : ''}`}
                                 >
                                     {item.label}
                                 </Link>
                             ))}
-                            
-                            {/* CTA Button */}
-                            <Link 
-                                href="/contact" 
-                                className="btn-primary"
-                            >
-                                Get Quote
-                            </Link>
                         </div>
 
                         {/* Mobile Menu Button */}
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="md:hidden text-gray-700 p-2 hover:bg-gray-100 rounded-lg transition-colors duration-300"
+                            className="md:hidden text-white p-2 hover:bg-blue-700/50 rounded-lg transition-colors duration-300"
                             aria-label="Toggle menu"
                         >
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -86,28 +78,19 @@ const Header = () => {
 
                 {/* Mobile Menu */}
                 {isMenuOpen && (
-                    <div className="md:hidden bg-white border-t border-gray-200">
+                    <div className="md:hidden bg-blue-900/95 backdrop-blur-md border-t border-blue-700">
                         <div className="container mx-auto px-4 py-4">
                             <nav className="space-y-2">
                                 {navItems.map((item) => (
                                     <Link 
                                         key={item.href}
                                         href={item.href}
-                                        className={`block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-300 ${pathname === item.href ? 'bg-blue-50 text-blue-600 font-semibold' : ''}`}
+                                        className={`block px-4 py-2 text-white hover:bg-blue-700/50 rounded-lg transition-colors duration-300 ${pathname === item.href ? 'bg-blue-700/50 text-blue-200 font-semibold' : ''}`}
                                         onClick={() => setIsMenuOpen(false)}
                                     >
                                         {item.label}
                                     </Link>
                                 ))}
-                                <div className="pt-4">
-                                    <Link 
-                                        href="/contact"
-                                        className="btn-primary w-full text-center block"
-                                        onClick={() => setIsMenuOpen(false)}
-                                    >
-                                        Get Quote
-                                    </Link>
-                                </div>
                             </nav>
                         </div>
                     </div>
