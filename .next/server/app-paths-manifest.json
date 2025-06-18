@@ -1,0 +1,13 @@
+{
+  "/page": "app/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/about/page": "app/about/page.js",
+  "/consultation/page": "app/consultation/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/gallery/page": "app/gallery/page.js",
+  "/projects/page": "app/projects/page.js",
+  "/api/contact/route": "app/api/contact/route.js",
+  "/api/env-test/route": "app/api/env-test/route.js",
+  "/api/test-email/route": "app/api/test-email/route.js",
+  "/api/test-env/route": "app/api/test-env/route.js"
+}
