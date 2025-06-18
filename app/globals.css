@@ -40,7 +40,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Desktop typography (original design) */
+/* Original Desktop Typography */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
@@ -58,7 +58,25 @@ p {
   margin-bottom: 1rem;
 }
 
-/* Mobile typography (enhanced) */
+/* Original Desktop Button Styles */
+.btn-primary {
+  @apply bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-all duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+.btn-secondary {
+  @apply bg-white text-blue-600 font-semibold py-2 px-4 rounded border border-blue-600 transition-all duration-300 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+/* Original Desktop Card Styles */
+.card {
+  @apply bg-white rounded-lg shadow-md p-4 transition-all duration-300 hover:shadow-lg;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-lg;
+}
+
+/* Mobile Typography (Enhanced) */
 @media (max-width: 768px) {
   h1 { font-size: clamp(1.5rem, 4vw, 3rem); }
   h2 { font-size: clamp(1.25rem, 3vw, 2.5rem); }
@@ -70,16 +88,7 @@ p {
   }
 }
 
-/* Desktop button styles (original) */
-.btn-primary {
-  @apply bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-all duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500;
-}
-
-.btn-secondary {
-  @apply bg-white text-blue-600 font-semibold py-2 px-4 rounded border border-blue-600 transition-all duration-300 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500;
-}
-
-/* Mobile button styles (enhanced) */
+/* Mobile Button Styles (Enhanced) */
 @media (max-width: 768px) {
   .btn-primary {
     @apply bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-amber-300/50;
@@ -90,31 +99,27 @@ p {
   }
 }
 
-/* Desktop card styles (original) */
-.card {
-  @apply bg-white rounded-lg shadow-md p-4 transition-all duration-300 hover:shadow-lg;
-}
-
-/* Mobile card styles (enhanced) */
+/* Mobile Card Styles (Enhanced) */
 @media (max-width: 768px) {
   .card {
     @apply bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:transform hover:scale-105;
   }
 }
 
-.card-hover {
-  @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
-}
-
-/* Mobile navigation enhancements (only on mobile) */
+/* Mobile Navigation Enhancements (only on mobile) */
 @media (max-width: 768px) {
   .mobile-nav-item {
     @apply block w-full text-left px-4 py-3 text-lg font-medium text-white transition-all duration-300 hover:bg-white/10 hover:text-amber-300 rounded-lg;
   }
 }
 
-/* Professional animations */
-@keyframes fadeInUp {
+/* Basic Animations (Original) */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -125,65 +130,87 @@ p {
   }
 }
 
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+/* Animation Classes (Original) */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
 }
 
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
+.animate-slide-in-up {
+  animation: slideInUp 0.6s ease-out forwards;
+}
+
+/* Mobile-specific animations */
+@media (max-width: 768px) {
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
-}
 
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
-  50% {
-    transform: scale(1.05);
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
   }
-}
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
-  50% {
-    transform: translateY(-10px);
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
   }
-}
 
-/* Animation classes */
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
-}
+  .animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
 
-.animate-slide-in-left {
-  animation: slideInLeft 0.6s ease-out forwards;
-}
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+  }
 
-.animate-slide-in-right {
-  animation: slideInRight 0.6s ease-out forwards;
-}
+  .animate-pulse-slow {
+    animation: pulse 2s infinite;
+  }
 
-.animate-pulse-slow {
-  animation: pulse 2s infinite;
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
 }
 
 /* Mobile-specific enhancements (only on mobile) */
@@ -280,17 +307,19 @@ p {
   }
 }
 
-/* Gradient utilities */
-.gradient-primary {
-  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-}
+/* Gradient utilities (Mobile only) */
+@media (max-width: 768px) {
+  .gradient-primary {
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  }
 
-.gradient-secondary {
-  background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
-}
+  .gradient-secondary {
+    background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+  }
 
-.gradient-accent {
-  background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+  .gradient-accent {
+    background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+  }
 }
 
 /* Mobile-specific optimizations */
@@ -308,16 +337,27 @@ p {
   }
 }
 
-/* Shadow utilities */
-.shadow-professional {
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+/* Shadow utilities (Original) */
+.shadow-light {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.shadow-elevated {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+.shadow-medium {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* Mobile spacing utilities */
+/* Mobile shadow utilities */
+@media (max-width: 768px) {
+  .shadow-professional {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  .shadow-elevated {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+}
+
+/* Spacing utilities */
 .space-mobile {
   @apply space-y-4 md:space-y-6;
 }
@@ -329,3 +369,4 @@ p {
 .margin-mobile {
   @apply m-4 md:m-6;
 }
+
