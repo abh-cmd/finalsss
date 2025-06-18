@@ -1,20 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const WhatsAppWidget = () => {
-    const [isVisible, setIsVisible] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
     const [showPhonePopup, setShowPhonePopup] = useState(false);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsVisible(true);
-        }, 2000);
-
-        return () => clearTimeout(timer);
-    }, []);
 
     const handleWhatsAppClick = () => {
         const phoneNumber = '+919876543210'; // Replace with your actual WhatsApp number
@@ -29,7 +20,7 @@ const WhatsAppWidget = () => {
 
     return (
         <>
-            {/* Floating WhatsApp and Phone Buttons - Visible on All Devices */}
+            {/* Floating WhatsApp and Phone Buttons - Always Visible */}
             <div className="fixed bottom-6 right-6 z-50">
                 <div className="flex flex-col gap-4">
                     {/* WhatsApp Button */}

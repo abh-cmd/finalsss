@@ -29,13 +29,13 @@ const HeroSection = () => {
             <div className="relative z-10 flex items-center justify-center h-full hidden md:block">
                 <div className="text-center px-4 md:px-8">
                     {/* Desktop Enhanced Merged Box with Much Lower Position and No Glow */}
-                    <div className="animate-slideUpSmooth bg-white/25 backdrop-blur-lg rounded-[3rem] p-8 md:p-10 max-w-3xl mx-auto shadow-2xl border border-white/30 transform hover:scale-105 transition-all duration-500 mt-32">
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight drop-shadow-lg">
+                    <div className="animate-slideUpSmooth bg-white/25 backdrop-blur-lg rounded-[3rem] p-8 md:p-10 max-w-3xl mx-auto shadow-2xl border border-white/30 transform hover:scale-105 transition-all duration-500 mt-40">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight">
                             Transform Your Space with
                             <span className="block text-yellow-400 mt-3">Sri Sai Interiors</span>
                         </h1>
                         
-                        <p className="text-lg md:text-xl lg:text-2xl text-gray-200 mb-8 leading-relaxed max-w-2xl mx-auto drop-shadow-md font-medium">
+                        <p className="text-lg md:text-xl lg:text-2xl text-gray-200 mb-8 leading-relaxed max-w-2xl mx-auto font-medium">
                             Creating beautiful, functional interiors that reflect your style and enhance your lifestyle. 
                             From concept to completion, we bring your vision to life.
                         </p>
@@ -63,13 +63,13 @@ const HeroSection = () => {
             <div className="relative z-10 flex items-center justify-center h-full md:hidden">
                 <div className="text-center px-4">
                     {/* Mobile Enhanced Merged Box with Much Lower Position and No Glow */}
-                    <div className="animate-slideUpSmooth bg-white/30 backdrop-blur-lg rounded-[2rem] p-6 max-w-sm mx-auto shadow-2xl border border-white/40 transform hover:scale-105 transition-all duration-500 mt-24">
-                        <h1 className="text-2xl font-black text-white mb-4 leading-tight drop-shadow-md">
+                    <div className="animate-slideUpSmooth bg-white/30 backdrop-blur-lg rounded-[2rem] p-6 max-w-sm mx-auto shadow-2xl border border-white/40 transform hover:scale-105 transition-all duration-500 mt-32">
+                        <h1 className="text-2xl font-black text-white mb-4 leading-tight">
                             Transform Your Space with
                             <span className="block text-yellow-400 mt-2">Sri Sai Interiors</span>
                         </h1>
                         
-                        <p className="text-sm text-gray-200 mb-6 leading-relaxed mx-auto drop-shadow-sm font-medium">
+                        <p className="text-sm text-gray-200 mb-6 leading-relaxed mx-auto font-medium">
                             Creating beautiful, functional interiors that reflect your style and enhance your lifestyle. 
                             From concept to completion, we bring your vision to life.
                         </p>
